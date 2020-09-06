@@ -91,6 +91,7 @@ Created with <3 by hamptonmoore`
         data = data.replace("$CLUB$", raster);
 
         fs.writeFile(path + "/index.html", data, (err) => { });
+	fs.writeFile(path + "/club.txt", raster, (err)=>{});
     });
 
 });
