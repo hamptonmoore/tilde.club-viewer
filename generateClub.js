@@ -55,7 +55,7 @@ exec("/usr/bin/who", (error, stdout, stderr) => {
     let users = stdout.split("\n");
     users.pop();
     users = users.map((user) => user.match(/\S+/g)[0]);
-
+    users = users.filter((el, i, arr) => arr.indexOf(el) === i);
     const club = new Grid(80, 60);
 
     let rawDate = new Date();
