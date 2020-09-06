@@ -49,6 +49,8 @@ function placeUser(club, username, taken) {
     club.place(username, x + centerAdjust, y + face.height);
 }
 
+const repo = "https://github.com/hamptonmoore/tilde.club-viewer";
+
 exec("/usr/bin/who", (error, stdout, stderr) => {
     let users = stdout.split("\n");
     users.pop();
@@ -63,6 +65,8 @@ exec("/usr/bin/who", (error, stdout, stderr) => {
 There are currently ${users.length} users online
 Created with <3 by hamptonmoore`
     club.place(message, 0, 0);
+
+    club.place(repo, club.width - repo.length, club.height - 1);
 
     let taken = [];
 
