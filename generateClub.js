@@ -3,6 +3,7 @@ const Grid = require("./grid.js");
 const { exec } = require("child_process");
 const fs = require('fs');
 const path = "/home/hamptonmoore/public_html/club";
+let ascii_text_generator = require('ascii-text-generator');
 
 const randomIntBetween = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -49,8 +50,6 @@ function placeUser(club, username, taken) {
     club.place(username, x + centerAdjust, y + face.height);
 }
 
-const repo = "https://github.com/hamptonmoore/tilde.club-viewer";
-
 exec("/usr/bin/who", (error, stdout, stderr) => {
     let users = stdout.split("\n");
     users.pop();
@@ -62,11 +61,19 @@ exec("/usr/bin/who", (error, stdout, stderr) => {
     let time = rawDate.toTimeString().split(" ")[0];
     let date = rawDate.toDateString();
     let message = `Last Updated: ${rawDate.toString()}
-There are currently ${users.length} users online
+https://github.com/hamptonmoore/tilde.club-viewer
 Created with <3 by hamptonmoore`
     club.place(message, 0, 0);
 
-    club.place(repo, club.width - repo.length, club.height - 1);
+    let count = ascii_text_generator(users.length.toString(), "2");
+
+    let countSplit = count.split("\n").map((item) => item.length);
+    const averageWidth = countSplit.reduce((a, b) => a + b) / countSplit.length;
+
+    const countX = Math.floor((club.width / 2) - (averageWidth / 2));
+    const countY = Math.floor(club.height / 3 - (countSplit.length / 2));
+
+    club.place(count, countX, countY);
 
     let taken = [];
 

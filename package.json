@@ -1,0 +1,18 @@
+{
+  "name": "tilde.club-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamptonmoore/tilde.club-viewer.git"
+  },
+  "author": "Hampton Moore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamptonmoore/tilde.club-viewer/issues"
+  },
+  "homepage": "https://tilde.club/~hamptonmoore/club/",
+  "dependencies": {
+    "ascii-text-generator": "^1.0.5"
+  }
+}
