@@ -83,7 +83,7 @@ Created with <3 by hamptonmoore`
 
     let raster = club.rasterize();
 
-    fs.readFile(path + "/index.template.html", 'utf8', function (err, data) {
+    fs.readFile(path + "/src/index.template.html", 'utf8', function (err, data) {
         if (err) {
             throw err;
         }
@@ -91,7 +91,7 @@ Created with <3 by hamptonmoore`
         data = data.replace("$CLUB$", raster);
 
         fs.writeFile(path + "/index.html", data, (err) => { });
-        fs.writeFile(path + "/club.txt", raster, (err)=>{});
+        fs.writeFile(path + "/index.txt", raster, (err)=>{});
     });
 
 });
